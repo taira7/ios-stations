@@ -29,3 +29,4 @@ else
     cat station_result.xml
     clear
     exit 1
+- fi
