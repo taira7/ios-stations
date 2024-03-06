@@ -6,10 +6,10 @@
   "author": "Hikaru Terazono (3c1u) <3c1u@tohkani.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=14.17.0"
+    "node": ">=20.0.0"
   },
   "dependencies": {
-    "@techtrain/cli-railway": "0.1.11"
+    "@techtrain/cli-railway": "0.1.14"
   },
   "devDependencies": {
     "simple-git-hooks": "^2.5.1"
