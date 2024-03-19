@@ -216,6 +216,10 @@ class ios_stationsTests: XCTestCase {
             let model = try JSONDecoder().decode(SwiftPMv2.self, from: data)
             let alamofirePin = try XCTUnwrap(model.pins.first(where: { $0.identity.lowercased() == "alamofire" }), "SwiftPackageManager経由でAlamofireがインストールされていません")
             isAlamofireVersionMatched = alamofirePin.state.version == "5.4.3"
+        case 3:
+            let model = try JSONDecoder().decode(SwiftPMv3.self, from: data)
+            let alamofirePin = try XCTUnwrap(model.pins.first(where: { $0.identity.lowercased() == "alamofire" }), "SwiftPackageManager経由でAlamofireがインストールされていません")
+            isAlamofireVersionMatched = alamofirePin.state.version == "5.4.3"
         default:
             XCTFail("現在対応していないSwiftPackageManagerバージョンです。運営による修正対応をお待ち下さい")
         }
@@ -360,6 +364,18 @@ struct SwiftPMv1: Decodable {
 struct SwiftPMv2: Decodable {
     let pins: [Pin]
     let version: Int
+    
+    struct Pin: Decodable {
+        let identity: String
+        let kind: String
+        let location: String
+        let state: State
+    }
+}
+struct SwiftPMv3: Decodable {
+    let pins: [Pin]
+    let version: Int
+    let originHash: String
     
     struct Pin: Decodable {
         let identity: String
