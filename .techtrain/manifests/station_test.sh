@@ -5,7 +5,7 @@ clear () {
     rm station_result.xml
 }
 
-set -o pipefail && xcodebuild -project ios-stations.xcodeproj -scheme ios-stations -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 12 Pro" "-only-testing:ios-stationsTests/ios_stationsTests/testStation$1" test &> log.log
+set -o pipefail && xcodebuild -project ios-stations.xcodeproj -scheme ios-stations -sdk iphonesimulator -destination "platform=iOS Simulator,name=iPhone 15 Pro" "-only-testing:ios-stationsTests/ios_stationsTests/testStation$1" test &> log.log
 buildStatus=${PIPESTATUS[0]}
 
 cat log.log | xcpretty --report junit --output station_result.xml > /dev/null 2>&1
